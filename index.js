@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 //use mongoose for connecting to the server
 const mongoose = require("mongoose");
+const _ = require("lodash")
 
 const app = express();
 
@@ -103,7 +104,6 @@ app.post("/delete", function (req, res) {
     List.findOneAndUpdate({name: listName},{$pull:{items: {_id:checkedItemId}}}, function(err,foundList){
       if(!err){
         res.redirect("/" + listName)
-
       }
     })
   }
@@ -139,6 +139,6 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
-app.listen(3009, function () {
-  console.log("server started on port 3009");
+app.listen(3001, function () {
+  console.log("server started on port 3001");
 });

@@ -5,7 +5,7 @@
 <div class="box">
   <!--Using for each loop to loop through the items  -->
   <% newListItems.forEach(function(item){ %>
-  <input action="/delete" method="post">
+  <form action="/delete" method="post">
     <div class="item">
       <input
         type="checkbox"
@@ -15,7 +15,7 @@
       />
       <p><%= item.name %></p>
     </div>
-    <input name="listName" type="hidden" value="<%= listTitle %>"></input>
+    <input name="listName" type="hidden" value="<%= listTitle %>"></form>
   </form>
 
   <%}) %>
