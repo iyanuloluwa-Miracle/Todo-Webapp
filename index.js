@@ -6,7 +6,9 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash")
 
-const app = express();
+
+const app = express()
+const port= process.env.PORT || 3001
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -14,7 +16,7 @@ app.use(express.static("public"));
 
 //server for also connecting to the host
 mongoose.set("strictQuery", true);
-mongoose.connect("mongodb://localhost:27017/todolistDB", {
+mongoose.connect('mongodb+srv://admin-iyanex:iremide.nexzy10@cluster0.d33wiix.mongodb.net/todoListDB', {
   useNewUrlParser: true,
 });
 
@@ -139,6 +141,4 @@ app.get("/about", function (req, res) {
   res.render("about");
 });
 
-app.listen(3001, function () {
-  console.log("server started on port 3001");
-});
+app.listen(port, ()=> console.log(`listening to port ${port}`))
